@@ -18,7 +18,7 @@ from serial.tools import list_ports
 import PlotJV_view as pjv
 import PhotovCalc as pvc
 import time
-# ------------------------   Defina os parametros a seguir ----------------------------------
+
 
 
 
@@ -41,7 +41,7 @@ if path == ' ':
 
 diretorio= path + User + '/' + time.strftime('%d-%b-%Y') + '/' + Measure_name +'/'
 
-parameters =  str(input('Change some parameter (V_start, V_end, Active area, step, delay, stabilization time or light power)? [y/N]:') or 'n')
+parameters =  str(input(' V_start = -0.1;\n V_end = 1.1;\n Active area = 0.12;\n step = 0.01;\n delay = 0.25;\n stabilization time = 2; or \n light power = 100 \n Change parameter?[y/N]:') or 'n')
 
 if parameters == 'n':
     Vinicio = -0.1
@@ -55,42 +55,39 @@ if parameters == 'n':
 else:
 
     while parameters != 'n':
-    
+
         if parameters == 'y':
-        
+
             # Initial potential
             Vinicio = float(input('V start:') or -0.1) #Vinicio = -0.1
-        
+
             # Final potential
             Vfinal = float(input('V end:') or 1.1) #Vfinal = 1.1
-        
+
             # Active area (cm^2)
-        
+
             actv_area = float(input('Active area:') or 0.12)
             # Define the step between the potentials, in volts (will change the scan speed)
             # The step should be a multiple of the potential range
             # That is ,Vend-Vstar = step x (integer)
             passo = float(input('Step:') or 0.01)   #0.01
-        
+
             # Delay between applying the potential and measure the current
             # For step  = 0.01 V the speed will be (delay - 0.1 = 100 mv/s ; 0.2 = 50 mV/s ; 1 = 10 mV/s)
             # speed = step/delay
             delay = float(input('Delay:') or 0.25)   #0.25
-        
+
             # Stabilization time, with applied potential (in seconds) before starting the scan.
             estab = int(input('Stabilization time:') or 2)
             #Light power (mW/cm^2)
             Pot_luz = int(input('Light power:') or 100)
-            
-            parameters =  str(input('Change some parameter (V_start, V_end, Active area, step, delay, stabilization time or light power)? [y/N]:') or 'n')
-        
-        
-        
+
+            parameters =  str(input(' V_start = ' + str(Vinicio) + ';\n V_end = ' + str(Vfinal) + ';\n Active area = ' + str(actv_area) + ';\n step = ' + str(passo) + ';\n delay = ' + str(delay) + ';\n stabilization time = ' + str(estab) + '; or \n light power = ' + str(Pot_luz) + ' \n Change parameter?[y/N]:') or 'n')
+
+
+
         else:
-             parameters =  str(input('Change some parameter (V_start, V_end, Active area, step, delay, stabilization time or light power)? [y/N]:') or 'n')
-
-
-
+             parameters =  str(input(' V_start = -0.1;\n V_end = 1.1;\n Active area = 0.12;\n step = 0.01;\n delay = 0.25;\n stabilization time = 2; or \n light power = 100 \n Change parameter?[y/N]:') or 'n')
     #----------------------------------------------------- -------------------------------------------------
 
 #
