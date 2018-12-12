@@ -34,7 +34,7 @@ Measure_name = str(input('Experiment name:'))  # use a name to identify the fold
 path = ' '
 
 if path == ' ':
-	path = str(input('General directory:') or '/home/paulo/MEGA/program/medida_JV/')
+	path = str(input('General directory:') or '/home/')
 
 
 
